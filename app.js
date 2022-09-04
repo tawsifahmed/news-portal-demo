@@ -13,6 +13,7 @@ const loadCategoryFetch = () => {
         .then(res => res.json())
         .then(data => displayCategories(data.data.news_category))
         .catch(error => console.log(error))
+
 }
 
 // const newsDetailsFetch = () => {
@@ -32,13 +33,21 @@ const displayCategories = categories => {
         // console.log(category);
         categoryDiv.innerHTML = `
         
-        <button onclick="loadNews('${category.category_id}')" class="justify-content-center p-4 btn btn-link">${category.category_name}</button >
-            `;
+        <button onclick="loadNews('${category.category_id}')" class="justify-content-center p-3 btn btn-link">${category.category_name}</button >
+            `
+            // toggleSpinner(true)
+            ;
+
+        // start loader
+
         categoriesContainer.appendChild(categoryDiv);
+
     })
 }
 
+
 const loadNews = id => {
+    toggleSpinner(true);
     const url2 = `https://openapi.programming-hero.com/api/news/category/${id}`;
     console.log(url2);
     fetch(url2)
@@ -73,9 +82,19 @@ const displayNews = newss => {
 </div>
         `;
         newsContainer.appendChild(newsDiv);
+        // stop loader
+        toggleSpinner(false);
     })
 }
-
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none')
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
+}
 // loadNews();
 
 loadCategoryFetch();
