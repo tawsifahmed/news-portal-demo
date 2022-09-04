@@ -16,13 +16,6 @@ const loadCategoryFetch = () => {
 
 }
 
-// const newsDetailsFetch = () => {
-//     const url1 = `https://openapi.programming-hero.com/api/news/category/01`;
-//     fetch(url1)
-//         .then(res1 => res1.json())
-//         .then(data1 => displayNews(data1.data))
-//         .catch(error => console.log(error))
-// }
 
 const displayCategories = categories => {
     // console.log(categories);
@@ -58,7 +51,6 @@ const loadNews = id => {
 }
 
 const displayNews = newss => {
-    console.log(newss);
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ''
     newss.forEach(news => {
@@ -68,14 +60,34 @@ const displayNews = newss => {
         <div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="${news.image_url}" class="img-fluid rounded-start w-100 h-100" alt="...">
+      <img src="${news.image_url}" class="img-fluid rounded-start w400 h-400" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">${news.title}</h5>
         <p class="card-text">${news.details}</p>
-        <img src="">
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class"d-flex flex-row">
+          
+          <div>
+          
+          </div>
+        
+        <div class="d-flex flex-row mb-3 justify-content-around">
+          <div class="p-2">
+          <div class=d-inline>
+           <img class="d-inline img-fluid rounded" width="50" height="50" src="${news.author.img}">
+           <p class="d-inline px-2">${news.author.name ? news.author.name : 'No Author'}</p>
+          </div>
+          </div>
+          <div class="p-2 pt-3"><p><small class="text-muted">Total Views: ${news.total_view}</small></p></div>
+          <div class="p-2">
+          <button onclick="loadNewsDetails('${news._id}')" type="button" class="btn btn-primary pt-3" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
+                Load Details
+            </button>
+          </div>
+        </div>
+        
+        </div>
       </div>
     </div>
   </div>
@@ -86,6 +98,25 @@ const displayNews = newss => {
         toggleSpinner(false);
     })
 }
+
+const loadNewsDetails = id2 => {
+    const url3 = `https://openapi.programming-hero.com/api/news/${id2}`;
+    fetch(url3)
+        .then(res3 => res3.json())
+        .then(data3 => displayNewsDetails(data3.data))
+        .catch(error => console.log(error))
+}
+
+const displayNewsDetails = newsInModals => {
+    console.log(newsInModals);
+    const modalTitle = document.getElementById('newsDetailModalLabel');
+    const modalDetails = document.getElementById('modalDetail');
+    newsInModals.forEach(newsInModal => {
+        modalTitle.innerText = newsInModal.title;
+        modalDetails.innerText = newsInModal.details;
+    })
+}
+
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
     if (isLoading) {
@@ -99,4 +130,3 @@ const toggleSpinner = isLoading => {
 
 loadCategoryFetch();
 
-newsDetailsFetch();
