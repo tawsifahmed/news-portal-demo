@@ -18,31 +18,21 @@ const loadCategoryFetch = () => {
 
 
 const displayCategories = categories => {
-    // console.log(categories);
     const categoriesContainer = document.getElementById('categories-container');
     categories.forEach(category => {
         const categoryDiv = document.createElement('a');
         categoryDiv.classList.add('d-inline');
-        // console.log(category);
         categoryDiv.innerHTML = `
-        
         <button onclick="loadNews('${category.category_id}')" class="justify-content-center p-3 btn btn-link">${category.category_name}</button >
-            `
-            // toggleSpinner(true)
-            ;
-
-        // start loader
-
+            `;
         categoriesContainer.appendChild(categoryDiv);
 
     })
 }
 
-
 const loadNews = id => {
     toggleSpinner(true);
     const url2 = `https://openapi.programming-hero.com/api/news/category/${id}`;
-
     fetch(url2)
         .then(res2 => res2.json())
         .then(data2 => displayNews(data2.data))
@@ -85,7 +75,6 @@ const displayNews = newss => {
                 <p class="card-text mb-4">${news.details.slice(0, 200)}...</p>
                 <div class"d-flex flex-row">
 
-
                 <div class="d-flex flex-row mt-1 justify-content-around">
                     <div class="p-2">
                         <div class=d-inline>
@@ -107,10 +96,7 @@ const displayNews = newss => {
   </div >
 </div >
     `;
-
         newsContainer.appendChild(newsDiv);
-
-
     })
 
 }
@@ -124,7 +110,6 @@ const loadNewsDetails = id2 => {
 }
 
 const displayNewsDetails = newsInModals => {
-
     const modalTitle = document.getElementById('newsDetailModalLabel');
     const modalDetails = document.getElementById('modalDetail');
     newsInModals.forEach(newsInModal => {
