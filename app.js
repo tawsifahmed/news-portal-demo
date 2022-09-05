@@ -52,47 +52,63 @@ const loadNews = id => {
 
 const displayNews = newss => {
     const newsContainer = document.getElementById('news-container');
-    newsContainer.innerHTML = ''
+    newsContainer.innerHTML = '';
+    const newssArray = Object.keys(newss);
+    console.log(newssArray);
+    console.log(newssArray.length);
+
+
+    const searchResult = document.getElementById('search-result');
+
+    searchResult.innerHTML = `
+    <div class="alert alert-secondary container-fluid w-50" role="alert">
+    ${newssArray.length} Search Result Found
+</div>
+        <p></p >
+    `;
+    toggleSpinner(false);
+
     newss.forEach(news => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
         newsDiv.innerHTML = `
-        <div class="card mb-3">
-  <div class="row g-0 align-items-center">
-    <div class="col-md-4">
-      <img src="${news.image_url}" class="img-fluid rounded-start w-100 h-100" alt="..." style="max-height: 100%;">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">${news.title}</h5>
-        <p class="card-text">${news.details.slice(0, 200)}...</p>
-        <div class"d-flex flex-row">
-              
+    <div class="card mb-3">
+    <div class="row g-0 align-items-center">
+        <div class="col-md-4">
+            <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">${news.title}</h5>
+                <p class="card-text mb-4">${news.details.slice(0, 200)}...</p>
+                <div class"d-flex flex-row">
 
-        <div class="d-flex flex-row mb-1 justify-content-around">
-          <div class="p-2">
-          <div class=d-inline>
-           <img class="d-inline img-fluid rounded" width="35" height="35" src="${news.author.img ? news.author.img : 'No ImageFound'}">
-           <p class="d-inline px-2">${news.author.name ? news.author.name : 'No Author Found'}</p>
-          </div>
-          </div>
-          <div class="p-2 pt-3"><p><small class="text-muted">Total Views: ${news.total_view ? news.total_view : 'No views'}</small></p></div>
-          <div class="p-2">
-          <button onclick="loadNewsDetails('${news._id}')" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
-                Load Details
-            </button>
-          </div>
+
+                <div class="d-flex flex-row mt-1 justify-content-around">
+                    <div class="p-2">
+                        <div class=d-inline>
+                            <img class="d-inline img-fluid rounded" width="35" height="35" src="${news.author.img ? news.author.img : 'No ImageFound'}">
+                                <p class="d-inline px-2">${news.author.name ? news.author.name : 'No Author Found'}</p>
+                        </div>
+                    </div>
+                    <div class="p-2 pt-3"><p><small class="text-muted">Total Views: ${news.total_view ? news.total_view : 'No views'}</small></p></div>
+                    <div class="p-2">
+                        <button onclick="loadNewsDetails('${news._id}')" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
+                            Load Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-        `;
+  </div >
+</div >
+    `;
         newsContainer.appendChild(newsDiv);
+
         // stop loader
-        toggleSpinner(false);
+
     })
 }
 
@@ -105,7 +121,7 @@ const loadNewsDetails = id2 => {
 }
 
 const displayNewsDetails = newsInModals => {
-    console.log(newsInModals);
+
     const modalTitle = document.getElementById('newsDetailModalLabel');
     const modalDetails = document.getElementById('modalDetail');
     newsInModals.forEach(newsInModal => {
