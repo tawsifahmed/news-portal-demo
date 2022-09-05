@@ -42,7 +42,7 @@ const displayCategories = categories => {
 const loadNews = id => {
     toggleSpinner(true);
     const url2 = `https://openapi.programming-hero.com/api/news/category/${id}`;
-    console.log(url2);
+
     fetch(url2)
         .then(res2 => res2.json())
         .then(data2 => displayNews(data2.data))
@@ -54,17 +54,14 @@ const displayNews = newss => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
     const newssArray = Object.keys(newss);
-    console.log(newssArray);
-    console.log(newssArray.length);
-
 
     const searchResult = document.getElementById('search-result');
-
     searchResult.innerHTML = `
-    <div class="alert alert-secondary container-fluid w-50" role="alert">
-    ${newssArray.length} Search Result Found
-</div>
-        <p></p >
+    <div class="container">
+       <div class="alert alert-light w-50 shadow-sm" role="alert">
+        ${newssArray.length} Search Result Found
+       </div> 
+    </div>
     `;
     toggleSpinner(false);
 
@@ -72,7 +69,7 @@ const displayNews = newss => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col');
         newsDiv.innerHTML = `
-    <div class="card mb-3">
+    <div class="card mb-3 shadow-sm border border-white">
     <div class="row g-0 align-items-center">
         <div class="col-md-4">
             <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
@@ -106,9 +103,6 @@ const displayNews = newss => {
 </div >
     `;
         newsContainer.appendChild(newsDiv);
-
-        // stop loader
-
     })
 }
 
@@ -139,7 +133,6 @@ const toggleSpinner = isLoading => {
         loaderSection.classList.add('d-none');
     }
 }
-// loadNews();
 
 loadCategoryFetch();
 
