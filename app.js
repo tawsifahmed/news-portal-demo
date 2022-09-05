@@ -61,9 +61,14 @@ const displayNews = newss => {
        <div class="alert alert-light w-50 shadow-sm" role="alert">
         ${newssArray.length} Search Result Found
        </div> 
+       <p class="fs-6 mb-4">Sort By: <span class="bg-white rounded shadow-none mx-3 p-2">Highest</span></p>
     </div>
     `;
     toggleSpinner(false);
+
+    newss.sort((a, b) => {
+        return b.total_view - a.total_view
+    });
 
     newss.forEach(news => {
         const newsDiv = document.createElement('div');
@@ -84,7 +89,7 @@ const displayNews = newss => {
                 <div class="d-flex flex-row mt-1 justify-content-around">
                     <div class="p-2">
                         <div class=d-inline>
-                            <img class="d-inline img-fluid rounded" width="35" height="35" src="${news.author.img ? news.author.img : 'No ImageFound'}">
+                            <img class="d-inline img-fluid rounded" width="35" height="35" src="${news.author.img}">
                                 <p class="d-inline px-2">${news.author.name ? news.author.name : 'No Author Found'}</p>
                         </div>
                     </div>
@@ -102,8 +107,12 @@ const displayNews = newss => {
   </div >
 </div >
     `;
+
         newsContainer.appendChild(newsDiv);
+
+
     })
+
 }
 
 const loadNewsDetails = id2 => {

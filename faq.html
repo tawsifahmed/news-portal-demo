@@ -47,7 +47,7 @@
                 <h2>
                     Frequently Asked Questions
                 </h2>
-                <p class="text-secondary">Let's see some reasonable questions related to HTML and CSS. The answers are
+                <p class="text-secondary">Let's see some reasonable questions related to JAVASCRIPT. The answers are
                     also
                     provided.</p>
             </div>
@@ -57,17 +57,18 @@
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                What is the difference between Flexbox and grid?
+                                What are the differences between var, let and const?
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                The basic difference between CSS Grid Layout and CSS Flexbox Layout is that flexbox was
-                                designed for layout in one dimension - either a row or a column. Grid was designed for
-                                <strong>
-                                    two-dimensional layout
-                                </strong> - rows, and columns at the same time.
+                                The differences between var, let, and const variable declaration in JavaScript include:
+                                Variables declared with var and const are scoped to the immediate function body.
+                                Variables declared with the var keyword are hoisted. Hoisting means that the variable
+                                can be accessed in their enclosing scope even before they are declared.
+                                Variables declared with the let keyword are block-scoped, which means the variables will
+                                have scope to the immediate enclosing block.
                             </div>
                         </div>
                     </div>
@@ -75,18 +76,16 @@
                         <h2 class="accordion-header" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Bootstrap vs. Tailwind - Which one is better?
+                                Arrow function vs. regular function - Can you define them?
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Bootstrap's utility and layout classes provide you with everything you need to
-                                style a responsive webpage. With Tailwind, however, you are much more involved in
-                                styling the webpage because you end up having to create your own components using
-                                the utility classes that the framework offers. Up until now, <strong>Bootstrap is still
-                                    the
-                                    most famous CSS framework in the world.</strong>
+                                Regular functions created using function declarations or expressions are constructible
+                                and callable. Since regular functions are constructible, they can be called using the
+                                new keyword. <strong>, the arrow functions are only callable and not constructible, i.e
+                                    arrow functions can never be used as constructor functions.</strong>
                             </div>
                         </div>
                     </div>
@@ -94,16 +93,23 @@
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                What is CSS box Model
+                                Diference between .forEach(), .map(), .filter(), .find()?
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                In web development, the CSS box model refers to how HTML elements are modeled in browser
-                                engines and how the dimensions of those HTML elements are derived from CSS properties.
-                                It is a fundamental concept for the composition of HTML webpages.
-                                It consists of: <strong>margins, borders, padding, and the actual content</strong>.
+                                .forEach(), is used to execute the same code on every element in an array but does not
+                                change the array and it returns undefined.
+
+                                .map() executes the same code on every element in an array and returns a new array with
+                                the updated elements.
+
+                                .filter() checks every element in an array to see if it meets a certain criteria and
+                                returns a new array with the elements that return truthy for the criteria.
+
+                                The find() method returns the value of the first element that passes a test. The find()
+                                method executes a function for each array element.
                             </div>
                         </div>
                     </div>
@@ -111,16 +117,19 @@
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                What are semantic tags in HTML?
+                                Why do you use template string?
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                The HTML semantics refers to the tags that <strong>provide meaning</strong> to an HTML
-                                page rather than
-                                just presentation. It makes HTML more comprehensible by better defining the different
-                                sections and layout of web pages.
+                                Using the template literal for the HTML is definitely more readable by reducing the
+                                annoyance. Your string can span multiple lines. You don't have to escape quotation
+                                characters. You don't have to use the plus operator.
+                                Template strings are a powerful feature of modern JavaScript released in ES6. It lets us
+                                insert/interpolate variables and expressions into strings without needing to concatenate
+                                like in older versions of JavaScript. It allows us to create strings that are complex
+                                and contain dynamic elements.
                             </div>
                         </div>
                     </div>
