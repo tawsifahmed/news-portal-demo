@@ -58,30 +58,27 @@ const displayNews = newss => {
         newsDiv.classList.add('col');
         newsDiv.innerHTML = `
         <div class="card mb-3">
-  <div class="row g-0">
+  <div class="row g-0 align-items-center">
     <div class="col-md-4">
-      <img src="${news.image_url}" class="img-fluid rounded-start w400 h-400" alt="...">
+      <img src="${news.image_url}" class="img-fluid rounded-start w-100 h-100" alt="..." style="max-height: 100%;">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">${news.title}</h5>
-        <p class="card-text">${news.details}</p>
+        <p class="card-text">${news.details.slice(0, 200)}...</p>
         <div class"d-flex flex-row">
-          
-          <div>
-          
-          </div>
-        
-        <div class="d-flex flex-row mb-3 justify-content-around">
+              
+
+        <div class="d-flex flex-row mb-1 justify-content-around">
           <div class="p-2">
           <div class=d-inline>
-           <img class="d-inline img-fluid rounded" width="50" height="50" src="${news.author.img}">
-           <p class="d-inline px-2">${news.author.name ? news.author.name : 'No Author'}</p>
+           <img class="d-inline img-fluid rounded" width="35" height="35" src="${news.author.img ? news.author.img : 'No ImageFound'}">
+           <p class="d-inline px-2">${news.author.name ? news.author.name : 'No Author Found'}</p>
           </div>
           </div>
-          <div class="p-2 pt-3"><p><small class="text-muted">Total Views: ${news.total_view}</small></p></div>
+          <div class="p-2 pt-3"><p><small class="text-muted">Total Views: ${news.total_view ? news.total_view : 'No views'}</small></p></div>
           <div class="p-2">
-          <button onclick="loadNewsDetails('${news._id}')" type="button" class="btn btn-primary pt-3" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
+          <button onclick="loadNewsDetails('${news._id}')" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
                 Load Details
             </button>
           </div>
