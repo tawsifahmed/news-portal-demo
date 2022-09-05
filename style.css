@@ -5,3 +5,15 @@
 .d-inline {
     cursor: pointer;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0%;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    line-height: 0.5;
+    background-color: #f8f9fa;
+    color: rgba(0, 0, 0, 0.511);
+    text-align: center;
+}
